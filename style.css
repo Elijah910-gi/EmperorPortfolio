@@ -1,0 +1,261 @@
+:root {
+  --bg: #1e1e2e;
+  --bg-sidebar: #181825;
+  --bg-tab: #11111b;
+  --border: #313244;
+  --text: #cdd6f4;
+  --text-muted: #7f849c;
+  --keyword: #f9a875;
+  --string: #a6e3a1;
+  --function: #89b4fa;
+  --property: #cdd6f4;
+  --comment: #6c7086;
+  --line-num: #45475a;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Source Sans 3', sans-serif;
+  min-height: 100vh;
+}
+
+code, pre, .file-icon, .tab, .file, .project-title, .comment {
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.editor {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border);
+  padding: 24px 0;
+}
+
+.sidebar-header {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  padding: 0 20px 16px;
+}
+
+.file-tree {
+  list-style: none;
+}
+
+.file {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.file:hover {
+  color: var(--text);
+}
+
+.file.active {
+  color: var(--text);
+  border-left-color: var(--function);
+  background: rgba(137, 180, 250, 0.06);
+}
+
+.file-icon {
+  font-size: 0.65rem;
+  color: var(--keyword);
+  background: rgba(249, 168, 117, 0.12);
+  padding: 1px 5px;
+  border-radius: 3px;
+}
+
+/* Main pane */
+.editor-pane {
+  display: flex;
+  flex-direction: column;
+}
+
+.tab-bar {
+  display: flex;
+  background: var(--bg-tab);
+  border-bottom: 1px solid var(--border);
+}
+
+.tab {
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  padding: 12px 22px;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.tab:hover {
+  color: var(--text);
+}
+
+.tab.active {
+  color: var(--text);
+  background: var(--bg);
+  border-bottom: 2px solid var(--function);
+}
+
+.file-view {
+  display: none;
+  padding: 40px;
+  max-width: 760px;
+}
+
+.file-view.active {
+  display: block;
+}
+
+.code-block {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  overflow-x: auto;
+}
+
+.line-num {
+  display: inline-block;
+  width: 24px;
+  color: var(--line-num);
+  user-select: none;
+}
+
+.keyword { color: var(--keyword); }
+.string { color: var(--string); }
+.function { color: var(--function); }
+.property { color: var(--property); }
+.comment { color: var(--comment); }
+.variable { color: var(--text); }
+
+/* Projects */
+.projects-header {
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.project-card {
+  background: var(--bg-sidebar);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.project-card.placeholder {
+  border-style: dashed;
+  opacity: 0.6;
+}
+
+.project-title {
+  font-size: 0.85rem;
+  margin-bottom: 10px;
+}
+
+.project-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.project-tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.project-tags span {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--function);
+  background: rgba(137, 180, 250, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.project-link {
+  font-size: 0.8rem;
+  color: var(--function);
+  text-decoration: none;
+}
+
+.project-link:hover {
+  text-decoration: underline;
+}
+
+/* Contact links inside code block */
+.contact-link {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px dashed var(--string);
+}
+
+.contact-link:hover {
+  border-bottom-style: solid;
+}
+
+/* Responsive */
+@media (max-width: 700px) {
+  .editor {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .tab-bar {
+    overflow-x: auto;
+  }
+
+  .file-view {
+    padding: 24px 20px;
+  }
+
+  .code-block {
+    font-size: 0.85rem;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+  }
+}
+
+/* Focus visibility */
+.tab:focus-visible,
+.file:focus-visible,
+.project-link:focus-visible,
+.contact-link:focus-visible {
+  outline: 2px solid var(--function);
+  outline-offset: 2px;
+}

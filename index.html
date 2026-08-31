@@ -1,222 +1,102 @@
-<!DOCTYPE html>
+</html><!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>I Love You Babe 💕</title>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Satisfy&display=swap" rel="stylesheet"/>
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    background: #000;
-    overflow: hidden;
-    height: 100vh;
-    width: 100vw;
-    font-family: 'Dancing Script', cursive;
-    cursor: default;
-  }
-
-  /* ── Canvas for falling text ── */
-  #matrix { position: fixed; top: 0; left: 0; z-index: 0; }
-
-  /* ── Floating emoji hearts ── */
-  .heart {
-    position: fixed;
-    font-size: 1.8rem;
-    animation: floatUp linear infinite;
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0;
-  }
-  @keyframes floatUp {
-    0%   { transform: translateY(110vh) scale(0.6) rotate(-10deg); opacity: 0; }
-    10%  { opacity: 1; }
-    90%  { opacity: 0.8; }
-    100% { transform: translateY(-10vh) scale(1.1) rotate(10deg); opacity: 0; }
-  }
-
-  /* ── Centre card ── */
-  #card {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 10;
-    text-align: center;
-    animation: pulse 3s ease-in-out infinite;
-  }
-  @keyframes pulse {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); }
-    50%       { transform: translate(-50%, -50%) scale(1.04); }
-  }
-
-  #card .big-heart {
-    font-size: clamp(3rem, 15vw, 6rem);
-    display: block;
-    filter: drop-shadow(0 0 18px #ff2d55) drop-shadow(0 0 40px #ff2d55);
-    animation: heartbeat 1.2s ease-in-out infinite;
-  }
-  @keyframes heartbeat {
-    0%, 100% { transform: scale(1); }
-    15%       { transform: scale(1.18); }
-    30%       { transform: scale(1); }
-    45%       { transform: scale(1.10); }
-    60%       { transform: scale(1); }
-  }
-
-  #card h1 {
-    font-family: 'Dancing Script', cursive;
-    font-size: clamp(2rem, 10vw, 4.5rem);
-    color: #fff;
-    text-shadow:
-      0 0 10px #ff2d55,
-      0 0 25px #ff2d55,
-      0 0 55px #ff6b88,
-      0 0 90px #ff2d55;
-    line-height: 1.2;
-    margin-top: 0.3rem;
-    letter-spacing: 2px;
-  }
-
-  #card p {
-    font-family: 'Satisfy', cursive;
-    font-size: clamp(1rem, 5vw, 1.6rem);
-    color: #ffb3c6;
-    text-shadow: 0 0 12px #ff2d55;
-    margin-top: 0.6rem;
-    letter-spacing: 1px;
-  }
-
-  /* ── Tap-to-burst particles ── */
-  .burst {
-    position: fixed;
-    pointer-events: none;
-    z-index: 20;
-    font-size: 1.5rem;
-    animation: burst 0.9s ease-out forwards;
-  }
-  @keyframes burst {
-    0%   { opacity: 1; transform: translate(0,0) scale(1); }
-    100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.3); }
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Idowu Elijah — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<canvas id="matrix"></canvas>
+  <div class="editor">
 
-<!-- Centre card -->
-<div id="card">
-  <span class="big-heart">❤️</span>
-  <h1>I Love You<br/>Babe</h1>
-  <p>always &amp; forever 💕</p>
-</div>
+    <!-- Sidebar / file explorer -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">EXPLORER</div>
+      <ul class="file-tree">
+        <li class="file active" data-target="about">
+          <span class="file-icon">JS</span> about.js
+        </li>
+        <li class="file" data-target="projects">
+          <span class="file-icon">JS</span> projects.js
+        </li>
+        <li class="file" data-target="contact">
+          <span class="file-icon">JS</span> contact.js
+        </li>
+      </ul>
+    </aside>
 
-<script>
-/* ══════════════════════════════════════
-   1.  MATRIX-STYLE FALLING "I love you babe" TEXT
-   ══════════════════════════════════════ */
-const canvas = document.getElementById('matrix');
-const ctx    = canvas.getContext('2d');
+    <!-- Main editor pane -->
+    <main class="editor-pane">
 
-function resize() {
-  canvas.width  = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-resize();
-window.addEventListener('resize', resize);
+      <!-- Tab bar -->
+      <div class="tab-bar">
+        <button class="tab active" data-target="about">about.js</button>
+        <button class="tab" data-target="projects">projects.js</button>
+        <button class="tab" data-target="contact">contact.js</button>
+      </div>
 
-const WORDS   = ['I love you', 'babe', '❤', 'bbe', 'always', '💕', 'forever', 'mine'];
-const COLS    = Math.floor(window.innerWidth / 18);
-const drops   = Array.from({length: COLS}, () => Math.random() * -50);
-const speeds  = Array.from({length: COLS}, () => 0.3 + Math.random() * 0.7);
-const sizes   = Array.from({length: COLS}, () => 10 + Math.floor(Math.random() * 8));
-const colWords= Array.from({length: COLS}, () => WORDS[Math.floor(Math.random() * WORDS.length)]);
-const colors  = ['#ff2d55','#ff6b88','#ff85a1','#ffb3c6','#fff0f3'];
+      <!-- about.js -->
+      <section class="file-view active" id="about">
+        <pre class="code-block"><code><span class="line-num">1</span><span class="comment">// about.js</span>
+<span class="line-num">2</span>
+<span class="line-num">3</span><span class="keyword">const</span> <span class="variable">developer</span> = {
+<span class="line-num">4</span>  <span class="property">name:</span> <span class="string">"Idowu Elijah"</span>,
+<span class="line-num">5</span>  <span class="property">role:</span> <span class="string">"Full-stack developer"</span>,
+<span class="line-num">6</span>  <span class="property">status:</span> <span class="string">"CS student, University of Ibadan"</span>,
+<span class="line-num">7</span>  <span class="property">stack:</span> [<span class="string">"Python"</span>, <span class="string">"HTML"</span>, <span class="string">"CSS"</span>, <span class="string">"JavaScript"</span>],
+<span class="line-num">8</span>  <span class="property">bio:</span> <span class="string">"Building things from a phone and a laptop,</span>
+<span class="line-num">9</span>  <span class="string">one project at a time."</span>
+<span class="line-num">10</span>};</code></pre>
+      </section>
 
-function drawMatrix() {
-  // Fade trail
-  ctx.fillStyle = 'rgba(0,0,0,0.08)';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+      <!-- projects.js -->
+      <section class="file-view" id="projects">
+        <div class="projects-header">
+          <span class="comment">// projects.js</span>
+        </div>
+        <div class="project-grid">
 
-  drops.forEach((y, i) => {
-    const word  = colWords[i];
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    const size  = sizes[i];
-    ctx.font      = `${size}px 'Dancing Script', cursive`;
-    ctx.fillStyle = color;
-    ctx.shadowColor  = '#ff2d55';
-    ctx.shadowBlur   = 6;
-    ctx.fillText(word, i * 18, y * size);
+          <div class="project-card">
+            <div class="project-title"><span class="keyword">function</span> <span class="function">atmSimulator</span>()</div>
+            <p class="project-desc">A Python ATM simulator with balance, deposit, withdrawal and transfer logic — built and debugged entirely on mobile.</p>
+            <div class="project-tags"><span>Python</span></div>
+            <a href="#" class="project-link">view repo →</a>
+          </div>
 
-    // Reset column when off screen, randomly
-    if (y * size > canvas.height && Math.random() > 0.975) {
-      drops[i]   = 0;
-      colWords[i]= WORDS[Math.floor(Math.random() * WORDS.length)];
-    }
-    drops[i] += speeds[i];
-  });
-}
-setInterval(drawMatrix, 50);
+          <div class="project-card">
+            <div class="project-title"><span class="keyword">function</span> <span class="function">quizPlatform</span>()</div>
+            <p class="project-desc">Interactive quiz website covering computing fundamentals and Nigerian history.</p>
+            <div class="project-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+            <a href="#" class="project-link">view repo →</a>
+          </div>
 
+          <div class="project-card placeholder">
+            <div class="project-title"><span class="keyword">function</span> <span class="function">nextProject</span>()</div>
+            <p class="project-desc">Add your next project here — title, description, tags, and repo link.</p>
+            <div class="project-tags"><span>—</span></div>
+            <a href="#" class="project-link">view repo →</a>
+          </div>
 
-/* ══════════════════════════════════════
-   2.  FLOATING EMOJI HEARTS
-   ══════════════════════════════════════ */
-const EMOJIS = ['❤️','🧡','💕','💖','💗','💓','💞','🌹'];
+        </div>
+      </section>
 
-function spawnHeart() {
-  const el = document.createElement('div');
-  el.className = 'heart';
-  el.textContent = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
+      <!-- contact.js -->
+      <section class="file-view" id="contact">
+        <pre class="code-block"><code><span class="line-num">1</span><span class="comment">// contact.js</span>
+<span class="line-num">2</span>
+<span class="line-num">3</span><span class="keyword">const</span> <span class="variable">contact</span> = {
+<span class="line-num">4</span>  <span class="property">email:</span> <span class="string">"<a href="mailto:elijahidowu910@gmail.com" class="contact-link">elijahidowu910@gmail.com</a>"</span>,
+<span class="line-num">5</span>  <span class="property">whatsapp:</span> <span class="string">"<a href="https://wa.me/2348066309133" class="contact-link" target="_blank">+234 806 630 9133</a>"</span>,
+<span class="line-num">6</span>  <span class="property">github:</span> <span class="string">"<a href="https://github.com/Elijah910-gi" class="contact-link" target="_blank">Elijah910-gi</a>"</span>
+<span class="line-num">7</span>};</code></pre>
+      </section>
 
-  const size     = 1.2 + Math.random() * 2;
-  const left     = Math.random() * 100;
-  const duration = 5 + Math.random() * 7;
-  const delay    = Math.random() * 4;
+    </main>
+  </div>
 
-  el.style.cssText = `
-    left: ${left}vw;
-    font-size: ${size}rem;
-    animation-duration: ${duration}s;
-    animation-delay: ${delay}s;
-  `;
-  document.body.appendChild(el);
-
-  // Remove after one cycle to avoid DOM bloat
-  setTimeout(() => el.remove(), (duration + delay + 1) * 1000);
-}
-
-// Spawn hearts continuously
-setInterval(spawnHeart, 500);
-// Pre-seed a bunch immediately
-for (let i = 0; i < 20; i++) spawnHeart();
-
-
-/* ══════════════════════════════════════
-   3.  TAP / CLICK → HEART BURST
-   ══════════════════════════════════════ */
-document.addEventListener('click', burst);
-document.addEventListener('touchstart', e => {
-  [...e.touches].forEach(t => burst({ clientX: t.clientX, clientY: t.clientY }));
-}, { passive: true });
-
-function burst(e) {
-  for (let i = 0; i < 8; i++) {
-    const el = document.createElement('div');
-    el.className   = 'burst';
-    el.textContent = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
-    const angle = Math.random() * Math.PI * 2;
-    const dist  = 60 + Math.random() * 80;
-    el.style.left = e.clientX + 'px';
-    el.style.top  = e.clientY + 'px';
-    el.style.setProperty('--dx', Math.cos(angle) * dist + 'px');
-    el.style.setProperty('--dy', Math.sin(angle) * dist + 'px');
-    document.body.appendChild(el);
-    setTimeout(() => el.remove(), 950);
-  }
-}
-</script>
+  <script src="script.js"></script>
 </body>
 </html>
