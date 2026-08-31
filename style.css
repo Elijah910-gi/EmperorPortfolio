@@ -6,12 +6,13 @@
 
 :root {
   --bg: #08080b;
-  --card: rgba(255, 255, 255, 0.055);
-  --border: rgba(255, 255, 255, 0.1);
-  --text: #f5f7fb;
-  --muted: #9da3af;
-  --accent: #7c5cff;
-  --accent-2: #24d6ff;
+  --card: rgba(212, 175, 55, 0.06);
+  --border: rgba(212, 175, 55, 0.18);
+  --text: #f5f5f5;
+  --muted: #aaa6a0;
+  --accent: #d4af37;
+  --accent-2: #f5d76e;
+  --gold-dark: #9c7c19; 
   --max: 1180px;
 }
 
@@ -23,13 +24,13 @@ body {
   background:
     radial-gradient(
       circle at 15% 15%,
-      rgba(124, 92, 255, 0.14),
-      transparent 25%
+      rgba(212, 175, 55, 0.14),
+      transparent 28%
     ),
     radial-gradient(
       circle at 90% 35%,
-      rgba(36, 214, 255, 0.08),
-      transparent 24%
+      rgba(245, 215, 110, 0.07),
+      transparent 26%
     ),
     var(--bg);
 
@@ -245,8 +246,8 @@ a {
     linear-gradient(
       100deg,
       #ffffff 5%,
-      #9a8aff 45%,
-      #43dff7
+      #d4af37 50%,
+      #f5d76e 100%
     );
 
   background-clip: text;
@@ -606,17 +607,17 @@ pre {
   place-items: center;
 
   background:
-    rgba(124, 92, 255, 0.12);
+    rgba(212, 175, 55, 0.10);
 
   border:
     1px solid
-    rgba(124, 92, 255, 0.2);
+    rgba(212, 175, 55, 0.22);
 
   margin-bottom: 35px;
 
   font-weight: 700;
 
-  color: #baaaff;
+  color: #f5d76e;
 }
 
 .skill-card h3,
