@@ -1,17 +1,130 @@
-const tabs = document.querySelectorAll('.tab');
-const files = document.querySelectorAll('.file');
-const views = document.querySelectorAll('.file-view');
+// =========================
+// MOBILE NAVIGATION
+// =========================
 
-function showFile(target) {
-  views.forEach(view => view.classList.toggle('active', view.id === target));
-  tabs.forEach(tab => tab.classList.toggle('active', tab.dataset.target === target));
-  files.forEach(file => file.classList.toggle('active', file.dataset.target === target));
+const menuButton = document.querySelector(".menu-btn");
+const nav = document.querySelector(".nav");
+
+if (menuButton && nav) {
+
+  menuButton.addEventListener("click", () => {
+
+    const isOpen =
+      nav.classList.toggle("open");
+
+    menuButton.setAttribute(
+      "aria-expanded",
+      isOpen.toString()
+    );
+
+  });
+
+
+  // Close menu when a navigation
+  // link is clicked
+
+  document
+    .querySelectorAll(".nav a")
+    .forEach(link => {
+
+      link.addEventListener(
+        "click",
+        () => {
+
+          nav.classList.remove("open");
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+        }
+      );
+
+    });
+
 }
 
-tabs.forEach(tab => {
-  tab.addEventListener('click', () => showFile(tab.dataset.target));
+
+// =========================
+// CURRENT YEAR
+// =========================
+
+const year =
+  document.getElementById("year");
+
+if (year) {
+
+  year.textContent =
+    new Date().getFullYear();
+
+}
+
+
+// =========================
+// SCROLL REVEAL ANIMATION
+// =========================
+
+const revealElements =
+  document.querySelectorAll(".reveal");
+
+
+const observer =
+  new IntersectionObserver(
+    entries => {
+
+      entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+
+          entry.target.classList.add(
+            "visible"
+          );
+
+          observer.unobserve(
+            entry.target
+          );
+
+        }
+
+      });
+
+    },
+    {
+      threshold: 0.12
+    }
+  );
+
+
+revealElements.forEach(element => {
+
+  observer.observe(element);
+
 });
 
-files.forEach(file => {
-  file.addEventListener('click', () => showFile(file.dataset.target));
-});
+
+// =========================
+// CURSOR GLOW
+// =========================
+
+const glow =
+  document.querySelector(".cursor-glow");
+
+
+if (glow) {
+
+  window.addEventListener(
+    "mousemove",
+    event => {
+
+      glow.style.left =
+        `${event.clientX}px`;
+
+      glow.style.top =
+        `${event.clientY}px`;
+
+    }
+  );
+
+}
+
