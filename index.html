@@ -1,102 +1,733 @@
-</html><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Idowu Elijah — Portfolio</title>
+
+  <meta
+    name="description"
+    content="Emperor — Computer Science student, developer and AI enthusiast."
+  >
+
+  <title>Emperor | Portfolio</title>
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <div class="editor">
+  <!-- Cursor Glow -->
+  <div class="cursor-glow"></div>
 
-    <!-- Sidebar / file explorer -->
-    <aside class="sidebar" id="sidebar">
-      <div class="sidebar-header">EXPLORER</div>
-      <ul class="file-tree">
-        <li class="file active" data-target="about">
-          <span class="file-icon">JS</span> about.js
-        </li>
-        <li class="file" data-target="projects">
-          <span class="file-icon">JS</span> projects.js
-        </li>
-        <li class="file" data-target="contact">
-          <span class="file-icon">JS</span> contact.js
-        </li>
-      </ul>
-    </aside>
 
-    <!-- Main editor pane -->
-    <main class="editor-pane">
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
 
-      <!-- Tab bar -->
-      <div class="tab-bar">
-        <button class="tab active" data-target="about">about.js</button>
-        <button class="tab" data-target="projects">projects.js</button>
-        <button class="tab" data-target="contact">contact.js</button>
+  <header class="site-header">
+
+    <a href="#home" class="logo">
+      E<span>.</span>
+    </a>
+
+
+    <!-- Mobile Menu Button -->
+    <button
+      class="menu-btn"
+      aria-label="Open menu"
+      aria-expanded="false"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+
+    <nav class="nav">
+
+      <a href="#about">
+        About
+      </a>
+
+      <a href="#skills">
+        Skills
+      </a>
+
+      <a href="#projects">
+        Projects
+      </a>
+
+      <a href="#contact">
+        Contact
+      </a>
+
+    </nav>
+
+  </header>
+
+
+
+  <main>
+
+
+    <!-- =========================
+         HERO SECTION
+    ========================== -->
+
+    <section
+      class="section hero"
+      id="home"
+    >
+
+      <div class="hero-content reveal">
+
+        <p class="eyebrow">
+
+          <span class="status-dot"></span>
+
+          Available for projects
+
+        </p>
+
+
+        <h1>
+
+          I build clean,
+          modern
+
+          <span class="gradient-text">
+            digital experiences.
+          </span>
+
+        </h1>
+
+
+        <p class="hero-copy">
+
+          I'm <strong>Emperor</strong>, a Computer Science
+          student and developer interested in software,
+          web development and artificial intelligence.
+
+        </p>
+
+
+        <div class="hero-actions">
+
+          <a
+            href="#projects"
+            class="btn primary"
+          >
+            View my work
+          </a>
+
+
+          <a
+            href="#contact"
+            class="btn secondary"
+          >
+            Contact me
+          </a>
+
+        </div>
+
+
+        <!-- Small Stats -->
+
+        <div class="mini-stats">
+
+          <div>
+
+            <strong>
+              Web
+            </strong>
+
+            <span>
+              Development
+            </span>
+
+          </div>
+
+
+          <div>
+
+            <strong>
+              AI
+            </strong>
+
+            <span>
+              Exploration
+            </span>
+
+          </div>
+
+
+          <div>
+
+            <strong>
+              CS
+            </strong>
+
+            <span>
+              Student
+            </span>
+
+          </div>
+
+        </div>
+
       </div>
 
-      <!-- about.js -->
-      <section class="file-view active" id="about">
-        <pre class="code-block"><code><span class="line-num">1</span><span class="comment">// about.js</span>
-<span class="line-num">2</span>
-<span class="line-num">3</span><span class="keyword">const</span> <span class="variable">developer</span> = {
-<span class="line-num">4</span>  <span class="property">name:</span> <span class="string">"Idowu Elijah"</span>,
-<span class="line-num">5</span>  <span class="property">role:</span> <span class="string">"Full-stack developer"</span>,
-<span class="line-num">6</span>  <span class="property">status:</span> <span class="string">"CS student, University of Ibadan"</span>,
-<span class="line-num">7</span>  <span class="property">stack:</span> [<span class="string">"Python"</span>, <span class="string">"HTML"</span>, <span class="string">"CSS"</span>, <span class="string">"JavaScript"</span>],
-<span class="line-num">8</span>  <span class="property">bio:</span> <span class="string">"Building things from a phone and a laptop,</span>
-<span class="line-num">9</span>  <span class="string">one project at a time."</span>
-<span class="line-num">10</span>};</code></pre>
-      </section>
 
-      <!-- projects.js -->
-      <section class="file-view" id="projects">
-        <div class="projects-header">
-          <span class="comment">// projects.js</span>
+
+      <!-- =========================
+           CODE CARD
+      ========================== -->
+
+      <div class="hero-visual reveal">
+
+        <div class="orb orb-one"></div>
+
+        <div class="orb orb-two"></div>
+
+
+        <div class="code-card">
+
+          <div class="code-top">
+
+            <div class="dots">
+
+              <span></span>
+              <span></span>
+              <span></span>
+
+            </div>
+
+            <span>
+              developer.js
+            </span>
+
+          </div>
+
+
+          <pre><code><span class="purple">const</span> developer = {
+
+  name: <span class="green">"Emperor"</span>,
+
+  role: <span class="green">"CS Student"</span>,
+
+  interests: [
+
+    <span class="green">"Web Development"</span>,
+
+    <span class="green">"Artificial Intelligence"</span>,
+
+    <span class="green">"Software Engineering"</span>
+
+  ],
+
+  mindset: <span class="green">"always learning"</span>
+
+};</code></pre>
+
         </div>
-        <div class="project-grid">
 
-          <div class="project-card">
-            <div class="project-title"><span class="keyword">function</span> <span class="function">atmSimulator</span>()</div>
-            <p class="project-desc">A Python ATM simulator with balance, deposit, withdrawal and transfer logic — built and debugged entirely on mobile.</p>
-            <div class="project-tags"><span>Python</span></div>
-            <a href="#" class="project-link">view repo →</a>
-          </div>
+      </div>
 
-          <div class="project-card">
-            <div class="project-title"><span class="keyword">function</span> <span class="function">quizPlatform</span>()</div>
-            <p class="project-desc">Interactive quiz website covering computing fundamentals and Nigerian history.</p>
-            <div class="project-tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
-            <a href="#" class="project-link">view repo →</a>
-          </div>
+    </section>
 
-          <div class="project-card placeholder">
-            <div class="project-title"><span class="keyword">function</span> <span class="function">nextProject</span>()</div>
-            <p class="project-desc">Add your next project here — title, description, tags, and repo link.</p>
-            <div class="project-tags"><span>—</span></div>
-            <a href="#" class="project-link">view repo →</a>
-          </div>
+
+
+    <!-- =========================
+         ABOUT SECTION
+    ========================== -->
+
+    <section
+      class="section about"
+      id="about"
+    >
+
+      <div class="section-heading reveal">
+
+        <p class="section-kicker">
+          01 — About
+        </p>
+
+        <h2>
+          Building, learning
+          and improving.
+        </h2>
+
+      </div>
+
+
+      <div class="about-grid">
+
+
+        <div class="about-text glass reveal">
+
+          <p>
+
+            I enjoy turning ideas into functional
+            products. My focus is on creating fast,
+            responsive interfaces while continuously
+            expanding my knowledge of programming,
+            AI and modern software development.
+
+          </p>
+
+
+          <p>
+
+            I care about clean code, strong visual
+            design and solutions that are simple
+            for people to use.
+
+          </p>
 
         </div>
-      </section>
 
-      <!-- contact.js -->
-      <section class="file-view" id="contact">
-        <pre class="code-block"><code><span class="line-num">1</span><span class="comment">// contact.js</span>
-<span class="line-num">2</span>
-<span class="line-num">3</span><span class="keyword">const</span> <span class="variable">contact</span> = {
-<span class="line-num">4</span>  <span class="property">email:</span> <span class="string">"<a href="mailto:elijahidowu910@gmail.com" class="contact-link">elijahidowu910@gmail.com</a>"</span>,
-<span class="line-num">5</span>  <span class="property">whatsapp:</span> <span class="string">"<a href="https://wa.me/2348066309133" class="contact-link" target="_blank">+234 806 630 9133</a>"</span>,
-<span class="line-num">6</span>  <span class="property">github:</span> <span class="string">"<a href="https://github.com/Elijah910-gi" class="contact-link" target="_blank">Elijah910-gi</a>"</span>
-<span class="line-num">7</span>};</code></pre>
-      </section>
 
-    </main>
-  </div>
+
+        <div class="about-card reveal">
+
+          <span class="big-number">
+            100%
+          </span>
+
+
+          <p>
+
+            Curiosity-driven.
+            Focused on becoming better
+            with every project.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         SKILLS SECTION
+    ========================== -->
+
+    <section
+      class="section"
+      id="skills"
+    >
+
+      <div class="section-heading reveal">
+
+        <p class="section-kicker">
+          02 — Skills
+        </p>
+
+        <h2>
+          Tools I work with.
+        </h2>
+
+      </div>
+
+
+      <div class="skills-grid">
+
+
+        <!-- Frontend -->
+
+        <article class="skill-card reveal">
+
+          <div class="skill-icon">
+            &lt;/&gt;
+          </div>
+
+          <h3>
+            Frontend
+          </h3>
+
+          <p>
+
+            HTML, CSS, JavaScript,
+            responsive layouts and
+            modern UI design.
+
+          </p>
+
+        </article>
+
+
+
+        <!-- Programming -->
+
+        <article class="skill-card reveal">
+
+          <div class="skill-icon">
+            { }
+          </div>
+
+          <h3>
+            Programming
+          </h3>
+
+          <p>
+
+            Building programming fundamentals
+            and solving problems with code.
+
+          </p>
+
+        </article>
+
+
+
+        <!-- AI -->
+
+        <article class="skill-card reveal">
+
+          <div class="skill-icon">
+            AI
+          </div>
+
+          <h3>
+            Artificial Intelligence
+          </h3>
+
+          <p>
+
+            Exploring AI tools, automation,
+            prompting and intelligent applications.
+
+          </p>
+
+        </article>
+
+
+
+        <!-- Deployment -->
+
+        <article class="skill-card reveal">
+
+          <div class="skill-icon">
+            ↗
+          </div>
+
+          <h3>
+            Deployment
+          </h3>
+
+          <p>
+
+            GitHub, Git and Vercel for
+            version control and shipping
+            projects online.
+
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         PROJECTS SECTION
+    ========================== -->
+
+    <section
+      class="section"
+      id="projects"
+    >
+
+      <div class="section-heading reveal">
+
+        <p class="section-kicker">
+          03 — Projects
+        </p>
+
+        <h2>
+          Selected work.
+        </h2>
+
+      </div>
+
+
+      <div class="projects-grid">
+
+
+        <!-- Project 1 -->
+
+        <article
+          class="project-card featured reveal"
+        >
+
+          <div class="project-number">
+            01
+          </div>
+
+
+          <div>
+
+            <p class="project-type">
+              Web Development
+            </p>
+
+            <h3>
+              Personal Portfolio
+            </h3>
+
+            <p>
+
+              A responsive portfolio designed
+              to present my skills, projects
+              and contact information in a
+              clean, professional format.
+
+            </p>
+
+
+            <div class="tags">
+
+              <span>
+                HTML
+              </span>
+
+              <span>
+                CSS
+              </span>
+
+              <span>
+                JavaScript
+              </span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- Project 2 -->
+
+        <article
+          class="project-card reveal"
+        >
+
+          <div class="project-number">
+            02
+          </div>
+
+
+          <div>
+
+            <p class="project-type">
+              Coming Soon
+            </p>
+
+            <h3>
+              Next Project
+            </h3>
+
+            <p>
+
+              This space is ready for
+              the next application, website
+              or AI project I build.
+
+            </p>
+
+
+            <div class="tags">
+
+              <span>
+                In progress
+              </span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- Project 3 -->
+
+        <article
+          class="project-card reveal"
+        >
+
+          <div class="project-number">
+            03
+          </div>
+
+
+          <div>
+
+            <p class="project-type">
+              Coming Soon
+            </p>
+
+            <h3>
+              Future Build
+            </h3>
+
+            <p>
+
+              More projects will be added
+              as I continue learning
+              and shipping.
+
+            </p>
+
+
+            <div class="tags">
+
+              <span>
+                Coming soon
+              </span>
+
+            </div>
+
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         CONTACT SECTION
+    ========================== -->
+
+    <section
+      class="section contact"
+      id="contact"
+    >
+
+      <div class="contact-box reveal">
+
+        <p class="section-kicker">
+          04 — Contact
+        </p>
+
+
+        <h2>
+          Have an idea?
+          Let's build it.
+        </h2>
+
+
+        <p>
+
+          I'm open to collaborations,
+          project ideas and opportunities
+          to learn and build useful things.
+
+        </p>
+
+
+        <div class="contact-actions">
+
+
+          <!-- EMAIL -->
+
+          <a
+            href="mailto:elijahidowu910@gmail.com"
+            class="btn primary"
+          >
+            Email me
+          </a>
+
+
+          <!-- WHATSAPP -->
+
+          <a
+            href="https://wa.me/2348066309133"
+            target="_blank"
+            rel="noopener"
+            class="btn secondary"
+          >
+            WhatsApp
+          </a>
+
+
+          <!-- CALL -->
+
+          <a
+            href="tel:+2348066309133"
+            class="btn secondary"
+          >
+            Call me
+          </a>
+
+
+          <!-- GITHUB -->
+
+          <a
+            href="https://github.com/Elijah910-gi"
+            target="_blank"
+            rel="noopener"
+            class="btn secondary"
+          >
+            GitHub
+          </a>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <p>
+
+      © <span id="year"></span>
+      Emperor.
+      Built with code, not chaos.
+
+    </p>
+
+
+    <a href="#home">
+      Back to top ↑
+    </a>
+
+  </footer>
+
+
+
+  <!-- JAVASCRIPT -->
 
   <script src="script.js"></script>
+
 </body>
 </html>
