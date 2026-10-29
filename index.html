@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8">\n  <meta name="theme-color" content="#080b14">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta
@@ -27,7 +27,7 @@
 <body>
 
   <!-- Cursor Glow -->
-  <div class="cursor-glow"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
 
 
   <!-- =========================
@@ -53,7 +53,7 @@
     </button>
 
 
-    <nav class="nav">
+    <nav class="nav" id="site-navigation">
 
       <a href="#about">
         About
@@ -521,51 +521,35 @@
 
 
 
-        <!-- Project 2 -->
-
-        <article
-          class="project-card reveal"
+                <!-- Project 2: EMPEROR AI PDF Generator -->
+        <a
+          class="project-card project-link reveal"
+          href="https://emperor-ai-pdf.vercel.app"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Open EMPEROR AI PDF Generator in a new tab"
         >
-
           <div class="project-number">
-            02
+            02 <span class="project-arrow" aria-hidden="true">↗</span>
           </div>
-
 
           <div>
-
-            <p class="project-type">
-              Chill its coming in a bit you know
-            </p>
-
-            <h3>
-              Next Project
-            </h3>
-
+            <p class="project-type">AI Tool · Featured Build</p>
+            <h3>EMPEROR AI PDF Generator</h3>
             <p>
-
-              This space is ready for
-              the next application, website
-              or AI project I build.
-
+              Turn ideas into polished, structured creator strategy reports
+              with an AI-focused workflow and clean, print-ready PDF output.
             </p>
-
-
             <div class="tags">
-
-              <span>
-                In progress
-              </span>
-
+              <span>AI</span>
+              <span>PDF Generation</span>
+              <span>Web App</span>
             </div>
-
+            <span class="project-cta">Launch application <span aria-hidden="true">↗</span></span>
           </div>
+        </a>
 
-        </article>
-
-
-
-        <!-- Project 3 -->
+<!-- Project 3 -->
 
         <article
           class="project-card reveal"
